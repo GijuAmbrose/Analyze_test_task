@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container"> 
+  <h1 class="mb-4 mt-5">Securities</h1>
+
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th>Issuer name</th>
+        <th>Security type name</th>
+        <th>Security name</th>
+        <th>Isin</th>
+        <th>Issue date</th>
+        <th>Maturity date</th>
+        <th>Outstanding stock</th>
+        <th>Face value</th>
+        <th>Coupon rate</th>
+        <th>Interest Frequency</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @securities.each do |security| %>
+        <tr>
+          <td><%= security.issuer.name%></td>
+          <td><%= security.security_type.security_type_name%></td>
+          <td><%= security.security_name %></td>
+          <td><%= security.isin %></td>
+          <td><%= security.issue_date %></td>
+          <td><%= security.maturity_date %></td>
+          <td><%= security.outstanding_stock %></td>
+          <td><%= security.face_value %></td>
+          <td><%= security.coupon_rate %></td>
+          <td><%= security.interest_frequency.frequency%></td>
+          <td><%= link_to 'Show', security %></td>
+          <td><%= link_to 'Edit', edit_security_path(security) %></td>
+          <td><%= link_to 'Destroy', security, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Security', new_security_path %>
+</div>

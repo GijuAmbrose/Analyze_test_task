@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h1 class="mb-4 mt-5">Interest Frequencies</h1>
+
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Frequency</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @interest_frequencies.each do |interest_frequency| %>
+        <tr>
+          <td><%= interest_frequency.frequency %></td>
+          <td><%= link_to 'Show', interest_frequency %></td>
+          <td><%= link_to 'Edit', edit_interest_frequency_path(interest_frequency) %></td>
+          <td><%= link_to 'Destroy', interest_frequency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Interest Frequency', new_interest_frequency_path %>
+</div>

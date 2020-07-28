@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .input-width {
+      width: 300px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+  <%= form_with(model: interest_frequency, local: true) do |form| %>
+    <% if interest_frequency.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(interest_frequency.errors.count, "error") %> prohibited this interest_frequency from being saved:</h2>
+
+        <ul>
+          <% interest_frequency.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field d-flex">
+      <%= form.label :frequency%>
+      <%= form.number_field :frequency, :class=> "ml-3 pl-2 pr-2 input-width" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Save" , :class=> "btn-info"%>
+    </div>
+  <% end %>
+
+</body>
+</html>

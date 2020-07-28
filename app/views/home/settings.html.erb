@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.btn-modify {
+			background: #007bff52;
+			max-width: 150px;
+			width:100%;
+			margin: 0 auto;
+			height: 150px;
+			border-radius: 15px;
+			display: table;
+			text-align: center;
+			padding: 0;
+			white-space: normal;
+		}
+	</style>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<h2 class="mt-5 mb-4">Settings</h2>
+		<div>
+			<div class="col-md-4 float-left"><%= button_to "Add Issuer",  new_issuer_path, :method => :get, :class => "btn btn-modify"%></div>
+			<div class="col-md-4 float-left"><%= button_to "Add Security Type", new_security_type_path, :method => :get, :class => "btn btn-modify" %></div>
+			<div class="col-md-4 float-left"><%= button_to "Add Interest Frequency", new_interest_frequency_path, :method => :get, :class => "btn btn-modify"%></div>
+		</div>
+	</div>
+</body>
+</html>

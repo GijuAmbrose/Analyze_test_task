@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .input-width {
+      width: 300px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+  <%= form_with(model: security_type, local: true) do |form| %>
+    <% if security_type.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(security_type.errors.count, "error") %> prohibited this security_type from being saved:</h2>
+
+        <ul>
+          <% security_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field d-flex">
+      <%= form.label :issuer_name%>
+      <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {:include_blank=> "Select Issuer Name"}, :class=> "ml-3 pl-2 pr-2 input-width"%>
+    </div>
+
+    <div class="field d-flex">
+      <%= form.label :security_type_name %>
+      <%= form.text_field :security_type_name, placeholder: "Enter Issuer Name", :class=> "ml-3 pl-2 pr-2 input-width" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Save", :class=> "btn-info" %>
+    </div>
+  <% end %>
+
+</body>
+</html>

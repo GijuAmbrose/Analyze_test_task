@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Security type name:</strong>
+   <%= @security_type.issuer.name%>
+  <%= @security_type.security_type_name %>
+</p>
+
+<%= link_to 'Edit', edit_security_type_path(@security_type) %> |
+<%= link_to 'Back', security_types_path %>

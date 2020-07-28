@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h1 class="mb-4 mt-5">Security Types</h1>
+
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Issuer name</th>
+        <th scope="col">Security type name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @security_types.each do |security_type| %>
+        <tr>
+          <td><%= security_type.issuer.name%></td>
+          <td><%= security_type.security_type_name %></td>
+          <td><%= link_to 'Show', security_type %></td>
+          <td><%= link_to 'Edit', edit_security_type_path(security_type) %></td>
+          <td><%= link_to 'Destroy', security_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Security Type', new_security_type_path %>
+</div>

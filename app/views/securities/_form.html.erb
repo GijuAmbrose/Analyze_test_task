@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .input-width {
+      width: 300px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+  <div class="container">
+    <%= form_with(model: security, local: true) do |form| %>
+      <% if security.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(security.errors.count, "error") %> prohibited this security from being saved:</h2>
+
+          <ul>
+            <% security.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field d-flex">
+        <%= form.label :issuer_name%>
+        <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {include_blank: "Select Issuer Name"}, {:class=> "ml-3 pl-2 pr-2 input-width"} %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :security_type%>
+        <%= form.collection_select :security_type_id, SecurityType.all, :id, :security_type_name, {include_blank: "Select Issuer Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :security_name %>
+        <%= form.text_field :security_name, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :isin %>
+        <%= form.text_field :isin, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :issue_date %>
+        <%= form.date_select :issue_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :maturity_date %>
+        <%= form.date_select :maturity_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :outstanding_stock %>
+        <%= form.text_field :outstanding_stock, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :face_value %>
+        <%= form.text_field :face_value, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
+
+      <div class="field">
+        <%= form.label :coupon_rate %>
+        <%= form.text_field :coupon_rate, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+
+      <div class="field d-flex">
+        <%= form.label :interest_frequency %>
+        <%= form.collection_select :interest_frequency_id, InterestFrequency.all, :id, :frequency, {include_blank: "Select Interest Frequency "}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+
+      <div class="actions">
+        <%= form.submit  "Save", :class=> "btn-info"%>
+      </div>
+    <% end %>
+  </div>
+
+</body>
+</html>

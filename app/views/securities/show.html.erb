@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issuer name:</strong>
+  <%= @security.issuer.name %>
+</p>
+
+<p>
+  <strong>Security type name:</strong>
+  <%= @security.security_type.security_type_name %>
+</p>
+
+
+<p>
+  <strong>Security name:</strong>
+  <%= @security.security_name %>
+</p>
+
+<p>
+  <strong>Isin:</strong>
+  <%= @security.isin %>
+</p>
+
+<p>
+  <strong>Issue date:</strong>
+  <%= @security.issue_date %>
+</p>
+
+<p>
+  <strong>Maturity date:</strong>
+  <%= @security.maturity_date %>
+</p>
+
+<p>
+  <strong>Outstanding stock:</strong>
+  <%= @security.outstanding_stock %>
+</p>
+
+<p>
+  <strong>Face value:</strong>
+  <%= @security.face_value %>
+</p>
+
+<p>
+  <strong>Coupon rate:</strong>
+  <%= @security.coupon_rate %>
+</p>
+
+<p>
+  <strong>Interest Frequency:</strong>
+  <%= @security.interest_frequency.frequency %>
+</p>
+
+
+<%= link_to 'Edit', edit_security_path(@security) %> |
+<%= link_to 'Back', securities_path %>

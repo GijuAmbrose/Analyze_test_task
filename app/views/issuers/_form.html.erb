@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .input-width {
+      width: 300px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+  <%= form_with(model: issuer, local: true) do |form| %>
+    <% if issuer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(issuer.errors.count, "error") %> prohibited this issuer from being saved:</h2>
+
+        <ul>
+          <% issuer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field d-flex">
+      <%= form.label :name %>
+      <%= form.text_field :name, data: {behavior: "autocomplete" }, :class=> "ml-3 pl-2 pr-2 input-width" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</body>
+</html>
+
