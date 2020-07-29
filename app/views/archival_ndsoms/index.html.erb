@@ -1,25 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Archival Ndsoms</h1>
+  <p id="notice"><%= notice %></p>
+  <h1 class="mb-4 mt-5">Archival Ndsoms</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @archival_ndsoms.each do |archival_ndsom| %>
+  <table class="table table table-bordered">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', archival_ndsom %></td>
-        <td><%= link_to 'Edit', edit_archival_ndsom_path(archival_ndsom) %></td>
-        <td><%= link_to 'Destroy', archival_ndsom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Trade Indicator</th>
+        <th>YTM</th>
+        <th>Trade Price</th>
+        <th>Face Value</th>
+        <th>Security Description</th>
+        <th>ISIN</th>
+        <th>Trade Time</th>
+        <th>Trade Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @archival_ndsoms.each do |archival_ndsom| %>
+        <tr>
+          <td><%= archival_ndsom.trade_indicator%></td>
+          <td><%= archival_ndsom.ytm%></td>
+          <td><%= archival_ndsom.trade_price %></td>
+          <td><%= archival_ndsom.face_value %></td>
+          <td><%= archival_ndsom.security_description %></td>
+          <td><%= archival_ndsom.isin %></td>
+          <td><%= archival_ndsom.trade_time %></td>
+          <td><%= archival_ndsom.trade_date %></td>
+          <td><%= link_to 'Show', archival_ndsom %></td>
+          <td><%= link_to 'Edit', edit_archival_ndsom_path(archival_ndsom) %></td>
+          <td><%= link_to 'Destroy', archival_ndsom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Archival Ndsom', new_archival_ndsom_path %>
+  <br>
+
+  <%= will_paginate @archival_ndsoms, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+  <br>
+
+  <%= link_to 'New Archival Ndsom', new_archival_ndsom_path %>
+
+</div>

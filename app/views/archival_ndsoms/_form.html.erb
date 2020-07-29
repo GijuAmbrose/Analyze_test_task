@@ -1,17 +1,95 @@
-<%= form_with(model: archival_ndsom, local: true) do |form| %>
-  <% if archival_ndsom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(archival_ndsom.errors.count, "error") %> prohibited this archival_ndsom from being saved:</h2>
+<div class="container">
+  <%= form_with(model: archival_ndsom, local: true) do |form| %>
+    <% if archival_ndsom.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(archival_ndsom.errors.count, "error") %> prohibited this archival_ndsom from being saved:</h2>
 
-      <ul>
-        <% archival_ndsom.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% archival_ndsom.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :trade_indicator %>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :trade_indicator, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit class: "btn btn-primary"%>
-  </div>
-<% end %>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :ytm %>
+      </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.text_field :ytm, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :trade_price %>
+      </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.text_field :trade_price, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :face_value %>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :face_value, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :security_description %>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :security_description, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :isin %>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :isin, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :trade_time %>
+      </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.time_select :trade_time, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :trade_date %>
+      </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.date_select :trade_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="col-12 float-left">
+        <%= form.submit  "Save", class: "btn btn-primary"%>
+      </div>
+    </div>
+
+
+  <% end %>
+</div>

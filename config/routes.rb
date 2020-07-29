@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'issuers/search'
   resources :security_types
   resources :issuers
-  resources :archival_ndsom
+  resources :archival_ndsoms
 
   #file uploading
   post '/file_upload', to: 'home#upload_file', as: 'upload_file'

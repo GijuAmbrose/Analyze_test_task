@@ -1,4 +1,34 @@
 <p id="notice"><%= notice %></p>
+<div class="container pull-left">
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th>Trade Indicator</th>
+        <th>YTM</th>
+        <th>Trade Price</th>
+        <th>Face Value</th>
+        <th>Security Description</th>
+        <th>ISIN</th>
+        <th>Trade Time</th>
+        <th>Trade Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @archival_ndsom.trade_indicator%></td>
+        <td><%= @archival_ndsom.ytm%></td>
+        <td><%= @archival_ndsom.trade_price %></td>
+        <td><%= @archival_ndsom.face_value %></td>
+        <td><%= @archival_ndsom.security_description %></td>
+        <td><%= @archival_ndsom.isin %></td>
+        <td><%= @archival_ndsom.trade_time %></td>
+        <td><%= @archival_ndsom.trade_date %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<%= link_to 'Edit', edit_archival_ndsom_path(@archival_ndsom) %> |
-<%= link_to 'Back', archival_ndsoms_path %>
+  <%= link_to 'Edit', edit_archival_ndsom_path(@archival_ndsom) %> |
+  <%= link_to 'Back', archival_ndsoms_path %>
+
+</div>
+

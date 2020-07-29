@@ -4,6 +4,18 @@ class Security < ApplicationRecord
   belongs_to :issuer
   belongs_to :security_type
   belongs_to :interest_frequency
+  self.per_page = 10
+
+  def self.to_csv
+    attributes = %w{id issuer_id security_type_id security_type_id security_name isin issue_date maturity_date outstanding_stock face_value coupon_rate created_at updated_at}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |security|
+        csv << attributes.map{ |attr| security.send(attr) }
+      end
+    end
+  end
 
   def self.import(file)
     csv_text = File.read(file.path)

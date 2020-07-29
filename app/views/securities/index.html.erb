@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container"> 
+<div class="container">
   <h1 class="mb-4 mt-5">Securities</h1>
 
   <table class="table table table-bordered">
@@ -43,5 +43,8 @@
 
   <br>
 
+  <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+  <br>
   <%= link_to 'New Security', new_security_path %>
 </div>

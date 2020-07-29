@@ -1,6 +1,13 @@
 <div class="container">
 	<h1 class="mb-4 mt-5">Add Security</h1>
 
+  <div class="col-12 mt-3 pl-30">
+    <%= button_to "Upload File", home_upload_trade_data_path, :class => "btn btn-primary", :method => :get, :params => { :security => true}  %>
+  </div>
+  <div class="col-12 mt-3 pl-30 mb-3">
+    <a href="/securities.csv" class="btn btn-primary export-file">Export Upload File</a>
+  </div>
+
 	<%= render 'form', security: @security %>
 
   <div class="col-12 mt-3 float-left pl-30">
@@ -10,5 +17,9 @@
  <style type="text/css">
    .pl-30{
       padding-left: 30px;
+   }
+   .export-file{
+    background: #0c79fa !important;
+    color: white !important;
    }
  </style>
