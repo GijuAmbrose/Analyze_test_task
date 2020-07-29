@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_065449) do
+ActiveRecord::Schema.define(version: 2020_07_28_093524) do
+
+  create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "trade_indicator"
+    t.float "ytm"
+    t.float "trade_price"
+    t.text "face_value"
+    t.text "security_description"
+    t.text "isin"
+    t.time "trade_time"
+    t.date "trade_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "interest_frequencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "frequency"

@@ -1,0 +1,35 @@
+<!-- header start -->
+<header class="fixed-header d-flex">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+
+   <nav class="navbar navbar-default navbar-tall navbar-full">
+    <div class="navbar-header">
+      <%=link_to("Home", root_path, :class => "text-white mr-3" ) %>
+      <%=link_to("Issuer", issuers_path, :class => "text-white mr-3")%>
+      <%=link_to("Security", securities_path, :class => "text-white mr-3")%>
+      <%=link_to("Interest Frequency", interest_frequencies_path, :class => "text-white mr-3")%>
+      <%=link_to("Archival Ndsom", issuers_path, :class => "text-white")%>
+    </div>
+   </nav>
+   <div class="nav-icons">
+     <a href="" class="text-white mr-3"><i class="fa fa-search" aria-hidden="true"></i></a>
+     <a href="" class="text-white mr-3"><i class="fa fa-bell-o" aria-hidden="true"></i></a>
+     <a href="" class="text-white mr-4"><i class="fa fa-user" aria-hidden="true"></i></a>
+   </div>
+
+</header>
+
+<style type="text/css">
+  .fixed-header{
+    background: #08a8c1;
+    padding: 10px 0;
+  }
+  .nav-icons{
+    margin-left: auto;
+    line-height: 2.5;
+  }
+  a{
+    text-decoration: none !important;
+    background: none !important;
+  }
+</style>

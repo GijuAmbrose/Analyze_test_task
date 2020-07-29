@@ -1,0 +1,17 @@
+<%= form_with(model: archival_ndsom, local: true) do |form| %>
+  <% if archival_ndsom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(archival_ndsom.errors.count, "error") %> prohibited this archival_ndsom from being saved:</h2>
+
+      <ul>
+        <% archival_ndsom.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
