@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @issuer.name %>
-</p>
+<div class="container pull-left">
+	<table class="table table-bordered">
+		<thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @issuer.name %></td>
+      </tr>
+    </tbody>
+  </table>
 
 <%= link_to 'Edit', edit_issuer_path(@issuer) %> |
 <%= link_to 'Back', issuers_path %>

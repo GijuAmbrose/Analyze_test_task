@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Interest Frequencies</h1>
 
-<p>
-  <strong>Frequency:</strong>
-  <%= @interest_frequency.frequency %>
-</p>
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Frequency</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @interest_frequency.frequency %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
 
 <%= link_to 'Edit', edit_interest_frequency_path(@interest_frequency) %> |
 <%= link_to 'Back', interest_frequencies_path %>

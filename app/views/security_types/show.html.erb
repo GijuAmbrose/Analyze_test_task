@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Security Types</h1>
 
-<p>
-  <strong>Security type name:</strong>
-   <%= @security_type.issuer.name%>
-  <%= @security_type.security_type_name %>
-</p>
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Issuer name</th>
+        <th scope="col">Security type name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @security_type.issuer.name%></td>
+        <td><%= @security_type.security_type_name %></td>
+      </tr>
+    </tbody>
+  </table>
+
 
 <%= link_to 'Edit', edit_security_type_path(@security_type) %> |
 <%= link_to 'Back', security_types_path %>
