@@ -1,4 +1,6 @@
 class IssuersController < ApplicationController
+  include Autocompletable
+
   before_action :set_issuer, only: [:show, :edit, :update, :destroy]
   before_action :force_json, only: :search
 
@@ -63,9 +65,14 @@ class IssuersController < ApplicationController
     end
   end
 
-  def search
-    q = params[:q].downcase
-    @issuer_auto_complete = Issuer.where("name LIKE ?", "%#{q}%")
+  def autocomplete
+    # results = JobTitle.select(:job_title, :occ_all).where("occ_all > 1")
+   #                    .where.not(soc_code: nil)
+   #                    .search_by_job_title(params[:q])
+   #                    .reorder('occ_all DESC')[0..25]
+    results = Issuer.select(:name)
+                      .where("lower(name) LIKE '#{params[:q].downcase}%'")
+    render json: {message: "Success", items: select2_autocomplete_results(results, {id: 'issuer_name', value: 'issuer_name'})}, status: 200
   end
 
   private
@@ -79,7 +86,4 @@ class IssuersController < ApplicationController
       params.require(:issuer).permit(:name)
     end
 
-    def force_json
-      request.format = :json
-    end
 end

@@ -26,7 +26,7 @@
 
     <div class="field d-flex">
       <%= form.label :name %>
-      <%= form.text_field :name, data: {behavior: "autocomplete" }, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      <%= form.select :name,  options_for_select([ "" ], ""), :id=> "issuer_name", :class=> "ml-3 pl-2 pr-2 input-width"%>
     </div>
 
     <div class="actions">
@@ -35,4 +35,30 @@
   <% end %>
 </body>
 </html>
+
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function() {
+
+    $('#job_title_search_input').select2({
+      placeholder: "Enter Issuer Name",
+      allowClear: true,
+      ajax: {
+        url: '/issuers/autocomplete',
+        dataType: 'json',
+        delay: 250,
+        data: function(params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function(data) {
+          return {
+            results: data.items
+          };
+        }
+      },
+      minimumInputLength: 1
+    });
+  });
+</script>
 
