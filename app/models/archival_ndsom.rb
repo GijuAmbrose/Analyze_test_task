@@ -1,6 +1,8 @@
 class ArchivalNdsom < ApplicationRecord
   require 'csv'
 
+  self.per_page = 20
+
   def self.import(file)
     csv_text = File.read(file.path)
     csv = CSV.parse(csv_text, :headers => true)

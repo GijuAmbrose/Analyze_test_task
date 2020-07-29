@@ -31,15 +31,15 @@ class HomeController < ApplicationController
         elsif params[:csv_file].original_filename.include?("Archival_NDSOM")
           ArchivalNdsom.import(params[:csv_file])
         else
-          return redirect_to root_url, notice: "You are uploading a wrong file, please check!!"
+          return redirect_to root_url, alert: "You are uploading a wrong file, please check!!"
         end
         return redirect_to securities_path, notice: "Successfully uploaded csv file."
       rescue => e
-        return redirect_to root_url, notice: "Logic error, failed to upload file!"
+        return redirect_to root_url, alert: "Logic error, failed to upload file!"
       end
 
     else
-      return redirect_to root_url, notice: "Failed to upload file!"
+      return redirect_to root_url, alert: "Failed to upload file!"
     end
   end
 

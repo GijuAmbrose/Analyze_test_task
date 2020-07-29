@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mb-4 mt-5">Upload Trade Data</h2>
+		<h2 class="mb-4 mt-5"><%= params[:security].present? ? "Upload Security File" : "Upload Trade Data" %></h2>
 		<div>
 			<%= form_tag upload_file_path, multipart: true do%>
 			  <label>Select file to be uploaded</label>

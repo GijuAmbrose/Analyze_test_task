@@ -4,7 +4,7 @@ class ArchivalNdsomsController < ApplicationController
   # GET /archival_ndsoms
   # GET /archival_ndsoms.json
   def index
-    @archival_ndsoms = ArchivalNdsom.all
+    @archival_ndsoms = ArchivalNdsom.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /archival_ndsoms/1
@@ -69,6 +69,7 @@ class ArchivalNdsomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def archival_ndsom_params
-      params.fetch(:archival_ndsom, {})
+      params.require(:archival_ndsom).permit(:archival_ndsoms, :trade_indicator, :ytm, :trade_price, :face_value, :security_description, :isin, :trade_time, :trade_date)
+      #params.fetch(:archival_ndsom, {}).permit(:archival_ndsoms, :trade_indicator, :ytm, :trade_price, :face_value, :security_description, :isin, :trade_time, :trade_date)
     end
 end

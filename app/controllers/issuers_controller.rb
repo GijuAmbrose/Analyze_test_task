@@ -28,7 +28,6 @@ class IssuersController < ApplicationController
     @issuer = Issuer.new(issuer_params)
 
     respond_to do |format|
-      binding.pry
       if @issuer.save
         format.html { redirect_to @issuer, notice: 'Issuer was successfully created.' }
         format.json { render :show, status: :created, location: @issuer }

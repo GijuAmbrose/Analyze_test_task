@@ -4,7 +4,11 @@ class SecuritiesController < ApplicationController
   # GET /securities
   # GET /securities.json
   def index
-    @securities = Security.all
+    @securities = params[:format].present? && params[:format] == "csv" ? Security.all : Security.paginate(:page => params[:page], :per_page => 10)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @securities.to_csv, filename: "securities-#{Date.today}.csv" }
+    end
   end
 
   # GET /securities/1
