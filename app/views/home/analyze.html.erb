@@ -50,14 +50,20 @@
           <%= render partial: "partials/table_results" , locals: { table_datas: @analyse_data} %>
         </div>
         <div class="w-100 d-flex">
-            <button class="btn btn-primary ml-auto">Analyse</button>
+            <button class="btn btn-primary ml-auto plot-graph">Analyse</button>
         </div>
     </div>
 </div>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<div id="analyse-page-line-chart" style="display: inline-block;"></div>
 
 <script type="text/javascript">
 
     $(document).ready(function() {
+
+        var issue_date = [];
+        var ytm_values = [];
+
         $("#isin-filter").on('change paste keyup', function() {
            $.ajax({
               url: '/filter_by',
@@ -69,5 +75,56 @@
               }
             });
         });
+
+        $(".plot-graph").on('click', function() {
+          if($("input[name='plot-to-graph']:checked").length > 0){
+            isin_array =[]
+            ytm_values = []
+            $.each($("input[name='plot-to-graph']:checked"), function(){
+                isin_array.push($(".analyse-row-"+this.value).find('td')[0].innerText)
+                ytm_values.push({name: $(".analyse-row-"+this.value).find('td')[0].innerText, data:[parseFloat($(".analyse-row-"+this.value).find('td')[5].innerText)]})
+            });
+            debugger
+            Highcharts.chart('analyse-page-line-chart', {
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  text: 'YTM Average Graph'
+              },
+              xAxis: {
+                  categories: isin_array,
+                  crosshair: true
+              },
+              yAxis: {
+                  min: 0,
+                  title: {
+                      text: 'YTM (%)'
+                  }
+              },
+              tooltip: {
+                  headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                  pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                  footerFormat: '</table>',
+                  shared: true,
+                  useHTML: true
+              },
+              plotOptions: {
+                  column: {
+                      pointPadding: 0.2,
+                      borderWidth: 0
+                  }
+              },
+              series: [[1,2,3,4]]
+          });
+
+          }
+          else{
+            alert("Please select atleast one field to plot the graph.")
+          }
+
+        });
+
     });
 </script>
