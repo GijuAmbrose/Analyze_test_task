@@ -30,7 +30,6 @@ class IssuersController < ApplicationController
     @issuer = Issuer.new(issuer_params)
 
     respond_to do |format|
-      binding.pry
       if @issuer.save
         format.html { redirect_to @issuer, notice: 'Issuer was successfully created.' }
         format.json { render :show, status: :created, location: @issuer }
@@ -65,14 +64,9 @@ class IssuersController < ApplicationController
     end
   end
 
-  def autocomplete
-    # results = JobTitle.select(:job_title, :occ_all).where("occ_all > 1")
-   #                    .where.not(soc_code: nil)
-   #                    .search_by_job_title(params[:q])
-   #                    .reorder('occ_all DESC')[0..25]
-    results = Issuer.select(:name)
-                      .where("lower(name) LIKE '#{params[:q].downcase}%'")
-    render json: {message: "Success", items: select2_autocomplete_results(results, {id: 'issuer_name', value: 'issuer_name'})}, status: 200
+  def search
+    q = params[:q].downcase
+    @issuer_auto_complete = Issuer.where("name LIKE ?", "%#{q}%")
   end
 
   private
@@ -84,6 +78,10 @@ class IssuersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def issuer_params
       params.require(:issuer).permit(:name)
+    end
+
+    def force_json
+      request.format = :json
     end
 
 end
