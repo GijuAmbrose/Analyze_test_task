@@ -1,4 +1,6 @@
 class IssuersController < ApplicationController
+  include Autocompletable
+
   before_action :set_issuer, only: [:show, :edit, :update, :destroy]
   before_action :force_json, only: :search
 
@@ -81,4 +83,5 @@ class IssuersController < ApplicationController
     def force_json
       request.format = :json
     end
+
 end
