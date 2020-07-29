@@ -1,0 +1,3 @@
+<% if params[:ajax_call].present? &&  params[:ajax_call] == "true" %>
+  $(".analyse-tab-data").html("<%= escape_javascript(render partial: 'partials/table_results', locals: { table_datas: @analyse_data } ) %>")
+<% end %>

@@ -1,0 +1,73 @@
+<div class="analysis-wrapper w-100 float-left mt-4">
+    <div class="container">
+        <form class="d-flex">
+            <h6>Analysis</h6>
+            <div class="inp-check ml-3">
+                <input type="radio" alt="" id="goi" name="analysis" value="goi" />
+                <label for="goi">GOI</label>
+            </div>
+            <div class="inp-check ml-3">
+                <input type="radio" alt="" id="sdl" name="analysis" value="sdl" />
+                <label for="sdl">SDL</label>
+            </div>
+            <div class="inp-check ml-3">
+                <input type="radio" alt="" id="dtb" name="analysis" value="dtb" />
+                <label for="dtb">DTB</label>
+            </div>
+            <div class="inp-check ml-3">
+                <input type="radio" alt="" id="cor" name="analysis" value="cor" />
+                <label for="cor">Corporate</label>
+            </div>
+        </form>
+        <div class="d-flex row mt-3">
+            <div class="d-analysis col-2 float-left">
+                <label>By Name / ISIN</label>
+                <input type="text" class="w-100" alt="" id="isin-filter" />
+            </div>
+            <div class="d-analysis col-2 float-left">
+                <label>By Tenure</label>
+                <input type="text" class="w-100" alt="" />
+            </div>
+            <div class="d-analysis col-2 float-left">
+                <label>By Int. Freq.</label>
+                <input type="text" class="w-100" alt="" />
+            </div>
+            <div class="d-analysis col-2 float-left">
+                <label>By Maturity</label>
+                <input type="text" class="w-100" alt="" />
+            </div>
+            <div class="d-analysis col-2 float-left">
+                <label>Put / Call Opt.</label>
+                <input type="text" class="w-100" alt="" />
+            </div>
+            <div class="d-analysis col-2 float-left">
+                <label>Credit Rating</label>
+                <input type="text" class="w-100" alt="" />
+            </div>
+        </div>
+
+        <div class="analyse-tab-data">
+          <%= render partial: "partials/table_results" , locals: { table_datas: @analyse_data} %>
+        </div>
+        <div class="w-100 d-flex">
+            <button class="btn btn-primary ml-auto">Analyse</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#isin-filter").on('change paste keyup', function() {
+           $.ajax({
+              url: '/filter_by',
+              type: "GET",
+              dataType: "script",
+              data: {isis: $(this).val(), ajax_call: true},
+              success: function(response) {
+                console.log(true)
+              }
+            });
+        });
+    });
+</script>

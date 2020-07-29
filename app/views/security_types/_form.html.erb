@@ -25,17 +25,27 @@
     <% end %>
 
     <div class="field d-flex">
-      <%= form.label :issuer_name%>
-      <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {:include_blank=> "Select Issuer Name"}, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      <div class="col-md-3 float-left">
+       <%= form.label :issuer_name%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {:include_blank=> "Select Issuer Name"}, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
     </div>
 
     <div class="field d-flex">
-      <%= form.label :security_type_name %>
-      <%= form.text_field :security_type_name, placeholder: "Enter Issuer Name", :class=> "ml-3 pl-2 pr-2 input-width" %>
+      <div class="col-md-3 float-left">
+        <%= form.label :security_type_name %>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :security_type_name, placeholder: "Enter Issuer Name", :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
     </div>
 
     <div class="actions">
-      <%= form.submit "Save", :class=> "btn-info" %>
+      <div class="col-12 float-left">
+        <%= form.submit "Save", class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 
