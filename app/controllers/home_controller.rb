@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   def upload_trade_data; end
 
   def analyze
-    @analyse_data = ArchivalNdsom.select("securities.isin", "interest_frequencies.frequency", "securities.interest_frequency_id", "securities.issue_date", "securities.maturity_date", "securities.id", "archival_ndsoms.ytm", "archival_ndsoms.id as a_id").joins("INNER JOIN securities ON securities.isin = archival_ndsoms.isin JOIN interest_frequencies ON interest_frequencies.id = securities.interest_frequency_id").uniq.take(10)
+    @analyse_data = ArchivalNdsom.select("securities.isin", "interest_frequencies.frequency", "securities.interest_frequency_id", "securities.issue_date", "securities.maturity_date", "securities.id", "archival_ndsoms.ytm", "archival_ndsoms.id as a_id").joins("INNER JOIN securities ON securities.isin = archival_ndsoms.isin JOIN interest_frequencies ON interest_frequencies.id = securities.interest_frequency_id").uniq(&:isin).take(15)
     if params[:ajax_call].present? && params[:ajax_call] == "true" && params[:isis].present?
        @analyse_data = @analyse_data.select { |x| x.isin.match?(params[:isis]) }
     else
