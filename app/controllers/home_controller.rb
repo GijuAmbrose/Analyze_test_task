@@ -1,3 +1,5 @@
+require './app/services/file_service.rb'
+
 class HomeController < ApplicationController
 
   def index
@@ -9,39 +11,11 @@ class HomeController < ApplicationController
 
   def upload_trade_data; end
 
-  def analyze
-    @analyse_data = ArchivalNdsom.select("securities.isin", "interest_frequencies.frequency", "securities.interest_frequency_id", "securities.issue_date", "securities.maturity_date", "securities.id", "archival_ndsoms.ytm", "archival_ndsoms.id as a_id").joins("INNER JOIN securities ON securities.isin = archival_ndsoms.isin JOIN interest_frequencies ON interest_frequencies.id = securities.interest_frequency_id").uniq(&:isin).take(15)
-    if params[:ajax_call].present? && params[:ajax_call] == "true" && params[:isis].present?
-       @analyse_data = @analyse_data.select { |x| x.isin.match?(params[:isis]) }
-    else
-       @analyse_data
-    end
-    respond_to do |format|
-      format.html
-      format.js # actually means: if the client ask for js -> return file.js
-    end
-  end
-
-
   def upload_file
-    if params[:csv_file].present?
-      begin
-        if params[:csv_file].original_filename.include?("securities")
-          path = securities_path
-          Security.import(params[:csv_file])
-        elsif params[:csv_file].original_filename.include?("Archival_NDSOM")
-          path = archival_ndsoms_path
-          ArchivalNdsom.import(params[:csv_file])
-        else
-          return redirect_to root_url, alert: "You are uploading a wrong file, please check!!"
-        end
-        return redirect_to path, notice: "Successfully uploaded csv file."
-      rescue => e
-        return redirect_to root_url, alert: "Logic error, failed to upload file!"
-      end
-
+    if status[0] == true
+      return redirect_to status[1], notice: "Successfully uploaded csv file."
     else
-      return redirect_to root_url, alert: "Failed to upload file!"
+      return redirect_to status[1], alert: "Uploading Failed"
     end
   end
 

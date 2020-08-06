@@ -1,33 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<style type="text/css">
-		.btn-modify {
-			background: #007bff52;
-			max-width: 150px;
-			width:100%;
-			margin: 0 auto;
-			height: 150px;
-			border-radius: 15px;
-			display: table;
-			text-align: center;
-			padding: 0;
 
-		}
-	</style>
-	<title></title>
-</head>
-<body>
-	<div class="container">
-		<p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-		<h2 class="mt-5 mb-3">HOME PAGE</h2>
-		<div>
-			<div class="col-md-3 float-left"><%= button_to "Settings", home_settings_path, :class => "btn btn-modify", :method => :get %></div>
-			<div class="col-md-3 float-left"><%= button_to "Add Security", new_security_path, :class => "btn btn-modify", :method => :get %></div>
-			<div class="col-md-3 float-left"><%= button_to "Upload Trade Data", home_upload_trade_data_path, :class => "col-md-3 btn btn-modify", :method => :get  %></div>
-			<div class="col-md-3 float-left"><%= button_to "Analyze", home_analyze_path, :class => "btn btn-modify", :method => :get%></div>
-		</div>
+<div class="container">
+	<p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
+	<h2 class="mt-5 mb-3">HOME PAGE</h2>
+	<div>
+		<div class="col-md-3 float-left"><%= button_to "Settings", home_settings_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-3 float-left"><%= button_to "Add Security", new_security_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-3 float-left"><%= button_to "Upload Trade Data", home_upload_trade_data_path, :class => "col-md-3 btn btn-modify", :method => :get  %></div>
+		<div class="col-md-3 float-left"><%= button_to "Analyze", analyze_index_path, :class => "btn btn-modify", :method => :get%></div>
 	</div>
-</body>
-</html>
+</div>
