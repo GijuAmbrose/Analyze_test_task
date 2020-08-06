@@ -1,0 +1,31 @@
+.pl-30{
+  padding-left: 30px !important;
+}
+
+.btn-modify {
+	background: #007bff52 !important;
+	max-width: 150px !important;
+	width:100%;
+	margin: 0 auto;
+	height: 150px;
+	border-radius: 15px !important;
+	display: table !important;
+	text-align: center !important;
+	padding: 0 !important;
+	white-space: normal;
+}
+
+.input-width {
+  width: 300px !important;
+  border-radius: 15px !important;
+  border: 1px solid #ddd !important;
+}
+
+.date-select select{
+  width: 11.33% !important;
+  float: left !important;
+}
+
+.m-top {
+	margin-top: 5px;
+}

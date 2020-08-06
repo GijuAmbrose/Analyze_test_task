@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<div class="container">
-		<h2 class="mb-4 mt-5"><%= params[:security].present? ? "Upload Security File" : "Upload Trade Data" %></h2>
-		<div>
-			<%= form_tag upload_file_path, multipart: true do%>
-			  <label>Select file to be uploaded</label>
 
-			  <%= file_field_tag :csv_file, :class => "ml-4" %>
-			 	<div class="w-100 float-left mt-4">
-	  			<%= submit_tag('Save', name:'submit', :class=> "btn btn-primary")%>
-	  		</div>
-			<%end%>
-		</div>
+<div class="container">
+	<h2 class="mb-4 mt-5"><%= params[:security].present? ? "Upload Security File" : "Upload Trade Data" %></h2>
+	<div>
+		<%= form_tag upload_file_path, multipart: true do%>
+		  <label>Select file to be uploaded</label>
+
+		  <%= file_field_tag :csv_file, :class => "ml-4" %>
+		 	<div class="w-100 float-left mt-4">
+  			<%= submit_tag('Save', name:'submit', :class=> "btn btn-primary")%>
+  		</div>
+		<%end%>
 	</div>
-</body>
-</html>
+</div>
 
 

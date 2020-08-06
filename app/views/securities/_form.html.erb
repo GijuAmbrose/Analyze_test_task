@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style type="text/css">
-    .input-width {
-      width: 300px;
-      border-radius: 15px;
-      border: 1px solid #ddd;
-    }
-  </style>
-  <title></title>
-</head>
-<body>
+
   <div class="container">
     <%= form_with(model: security, local: true) do |form| %>
       <% if security.errors.any? %>
@@ -122,13 +110,3 @@
       </div>
     <% end %>
   </div>
-
-</body>
-</html>
-
-<style type="text/css">
-  .date-select select{
-    width: 11.33%;
-    float: left;
-  }
-</style>

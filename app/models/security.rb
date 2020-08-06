@@ -18,7 +18,6 @@ class Security < ApplicationRecord
   end
 
   def self.import(file)
-    binding.pry
     csv_text = File.read(file.path)
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
