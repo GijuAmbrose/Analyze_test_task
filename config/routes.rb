@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get 'home/settings'
   get 'home/add_security'
   get 'home/upload_trade_data'
-  get 'home/analyze'
   get 'home/upload_file_path'
   get 'issuers/search'
+  get 'analyze/index'
   resources :security_types
   resources :issuers
   resources :archival_ndsoms
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post '/file_upload', to: 'home#upload_file', as: 'upload_file'
 
   #filter by
-  get "/filter_by" => "home#analyze"
+  get "/filter_by" => "analyze#index"
 
 end
