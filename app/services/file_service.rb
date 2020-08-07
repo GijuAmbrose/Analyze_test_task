@@ -1,22 +1,20 @@
 class FileService
 
-  def self.file_upload(file)
-    if file.present?
-      if file.original_filename.include?("securities")
-        path = "/securities"
-        Security.import(file)
-        status = [true, path]
-      elsif file.original_filename.include?("Archival_NDSOM")
-        path = "/archival_ndsoms"
-        ArchivalNdsom.import(file)
-        status = [true, path]
-      else
-        status = [false, "/"]
-      end
-    else
-      status = [false, "/"]
+
+  def initialize(file)
+    @file = file
+  end
+
+  def upload
+    file_name = fetch_file_name
+    status = @file.present? && file_name!= false ? file_name.import(@file) : "incorrect file_name"
+    return [status, @file.original_filename.split("-").first.downcase.tr("0-9","").camelize.underscore.pluralize]
+  end
+
+  def fetch_file_name
+    if @file.original_filename.include?("securities") || @file.original_filename.include?("Archival_NDSOM")
+      @file.original_filename.split("-").first.downcase.tr("0-9","").camelize.singularize.constantize
     end
-    return status
   end
 
 end
