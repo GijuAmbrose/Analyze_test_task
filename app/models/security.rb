@@ -24,23 +24,23 @@ class Security < ApplicationRecord
       begin
         self.set_associated_params(row["Issuer Name"], row["Security Type"], row["Interest Frequency"])
         self.set_non_associated_params(row)
-        security = Security.find_or_create_by(
-            issuer_id: @issuer.id,
-            security_type_id: @security_type.id,
-            interest_frequency_id: @interest_frequency.id,
-            security_name: @issuer.name,
-            isin:  @isin,
-            issue_date: @date_issued,
-            maturity_date: @date_maturity,
-            outstanding_stock: @outstanding_stock,
-            face_value: @face_val,
-            coupon_rate: @coupon_rate,
+        self.find_or_create_by(
+          issuer_id: @issuer.id,
+          security_type_id: @security_type.id,
+          interest_frequency_id: @interest_frequency.id,
+          security_name: @issuer.name,
+          isin:  @isin,
+          issue_date: @date_issued,
+          maturity_date: @date_maturity,
+          outstanding_stock: @outstanding_stock,
+          face_value: @face_val,
+          coupon_rate: @coupon_rate,
           )
-        p "Created security....."
       rescue => e
         return false
       end
     end
+    return true if self.count > 0
   end
 
   def self.set_associated_params(issuer, security_type, interest_frequency)

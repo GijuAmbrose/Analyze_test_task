@@ -15,21 +15,21 @@ class ArchivalNdsom < ApplicationRecord
     csv.each do |row|
       begin
         self.set_non_associated_params(row)
-        archival_ndsom = ArchivalNdsom.find_or_create_by(
-            trade_indicator: @trade_indicator,
-            ytm: @ytm,
-            trade_price: @trade_price,
-            face_value: @face_value,
-            security_description: @security_description,
-            isin: @isin,
-            trade_time: @trade_time,
-            trade_date: @trade_date,
+        self.find_or_create_by(
+          trade_indicator: @trade_indicator,
+          ytm: @ytm,
+          trade_price: @trade_price,
+          face_value: @face_value,
+          security_description: @security_description,
+          isin: @isin,
+          trade_time: @trade_time,
+          trade_date: @trade_date,
           )
-        p "Created ArchivalNdsom....."
       rescue => e
         return false
       end
     end
+    return true if self.count > 0
   end
 
   def self.set_non_associated_params(row)
