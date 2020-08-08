@@ -1,5 +1,3 @@
-require './app/services/file_service.rb'
-
 class HomeController < ApplicationController
 
   def index

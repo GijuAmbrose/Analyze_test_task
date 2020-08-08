@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :interest_frequencies
   resources :securities
-  root 'home#index'
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+  
+  root  'home#index'
   get 'home/settings'
   get 'home/add_security'
   get 'home/upload_trade_data'
@@ -17,5 +22,7 @@ Rails.application.routes.draw do
 
   #filter by
   get "/filter_by" => "analyze#index"
+
+  
 
 end
