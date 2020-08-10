@@ -29,3 +29,20 @@
 .m-top {
 	margin-top: 5px;
 }
+
+#notice-wrapper{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	background: rgba(135, 216, 213, 0.85);
+}
+.alert, .notice {
+	padding: 15px;
+	text-align: center;
+	margin: 0;
+	font-size: 1.25em;
+	font-weight: 700;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+}

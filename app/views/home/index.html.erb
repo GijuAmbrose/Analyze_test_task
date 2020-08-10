@@ -1,9 +1,12 @@
+
 <div class="container">
 	<h2 class="mt-5 mb-3">HOME PAGE</h2>
 	<div>
 		<div class="col-md-3 float-left"><%= button_to "Settings", home_settings_path, :class => "btn btn-modify", :method => :get %></div>
 		<div class="col-md-3 float-left"><%= button_to "Add Security", new_security_path, :class => "btn btn-modify", :method => :get %></div>
-		<div class="col-md-3 float-left"><%= button_to "Upload Trade Data", home_upload_trade_data_path, :class => "col-md-3 btn btn-modify", :method => :get  %></div>
+		<%if user_signed_in?%>
+			<div class="col-md-3 float-left"><%= button_to "Upload Trade Data", home_upload_trade_data_path, :class => "col-md-3 btn btn-modify", :method => :get  %></div>
+		<%end%>
 		<div class="col-md-3 float-left"><%= button_to "Analyze", analyze_index_path, :class => "btn btn-modify", :method => :get%></div>
 	</div>
 </div>

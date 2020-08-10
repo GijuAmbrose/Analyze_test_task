@@ -19,8 +19,17 @@
   </head>
 
   <body>
+    <%= render 'shared/flash_messages'%>
     <%= render 'partials/header' %>
-    <%= render partial: 'shared/flash_messages'%>
     <%= yield %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        setTimeout(function(){
+          $('#notice-wrapper').fadeOut("slow", function(){
+            $(this).remove();
+          })
+        }, 4500);
+      })
+    </script>
   </body>
 </html>
