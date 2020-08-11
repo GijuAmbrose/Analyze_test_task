@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_050011) do
+ActiveRecord::Schema.define(version: 2020_08_11_091857) do
 
   create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "trade_indicator"
@@ -65,8 +65,10 @@ ActiveRecord::Schema.define(version: 2020_08_11_050011) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rating_id", null: false
+    t.bigint "rating_agency_id", null: false
     t.index ["interest_frequency_id"], name: "index_securities_on_interest_frequency_id"
     t.index ["issuer_id"], name: "index_securities_on_issuer_id"
+    t.index ["rating_agency_id"], name: "index_securities_on_rating_agency_id"
     t.index ["rating_id"], name: "index_securities_on_rating_id"
     t.index ["security_type_id"], name: "index_securities_on_security_type_id"
   end
@@ -93,5 +95,6 @@ ActiveRecord::Schema.define(version: 2020_08_11_050011) do
     t.index ["state_id"], name: "index_towns_on_state_id"
   end
 
+  add_foreign_key "securities", "rating_agencies"
   add_foreign_key "securities", "ratings"
 end

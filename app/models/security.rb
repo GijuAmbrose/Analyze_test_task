@@ -5,6 +5,7 @@ class Security < ApplicationRecord
   belongs_to :security_type
   belongs_to :interest_frequency
   belongs_to :rating
+  belongs_to :rating_agency
   self.per_page = 10
 
   def self.to_csv
@@ -23,9 +24,9 @@ class Security < ApplicationRecord
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
       begin
-        self.set_associated_params(row["Issuer Name"], row["Security Type"], row["Interest Frequency"])
+        self.set_associated_params(row["Issuer Name"], row["Security Type"], row["Interest Frequency"], row["Rate"], row["Rating Agency"])
         self.set_non_associated_params(row)
-        self.find_or_create_by(
+        self.find_or_create_by!(
           issuer_id: @issuer.id,
           security_type_id: @security_type.id,
           interest_frequency_id: @interest_frequency.id,
@@ -36,6 +37,8 @@ class Security < ApplicationRecord
           outstanding_stock: @outstanding_stock,
           face_value: @face_val,
           coupon_rate: @coupon_rate,
+          rating_agency_id: @rating_agency.id,
+          rating_id: @rating.id,
           )
       rescue => e
         return false
@@ -44,10 +47,12 @@ class Security < ApplicationRecord
     return true if self.count > 0
   end
 
-  def self.set_associated_params(issuer, security_type, interest_frequency)
+  def self.set_associated_params(issuer, security_type, interest_frequency, rate, rating_agency)
     @issuer = Issuer.find_or_create_by(name: issuer)
     @security_type = SecurityType.find_or_create_by(security_type_name: security_type, issuer_id: @issuer.id)
     @interest_frequency = InterestFrequency.find_or_create_by(frequency: interest_frequency.to_i)
+    @rating_agency = RatingAgency.find_or_create_by(rating_agency_name: rating_agency)
+    @rating = Rating.find_or_create_by(rating: rate, rating_agency_id: @rating_agency.id)
   end
 
   def self.set_non_associated_params(row)
@@ -58,9 +63,8 @@ class Security < ApplicationRecord
     @face_val = row["Face Value"]
     @coupon_rate = row["Coupon Rate"].to_f
   end
-
-
+    
   validates_presence_of :issuer_id, :security_type_id, :interest_frequency_id, :security_name, 
-    :isin, :issue_date, :maturity_date, :outstanding_stock, :face_value, :coupon_rate
+    :isin, :issue_date, :maturity_date, :outstanding_stock, :face_value, :coupon_rate, :rating_id, :rating_agency_id
 end
 

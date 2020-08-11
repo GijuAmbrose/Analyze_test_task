@@ -6,7 +6,7 @@
         <%= form.label :issuer_name%>
       </div>
       <div class="col-md-6 float-left">
-        <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {include_blank: "Select Issuer Name"}, {:class=> "ml-3 pl-2 pr-2 input-width"} %>
+        <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {include_blank: "Select Issuer Name"}, {:class=> "ml-3 pl-2 pr-2 input-width issuer"} %>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
        <%= form.label :security_type%>
       </div>
       <div class="col-md-6 float-left">
-        <%= form.collection_select :security_type_id, SecurityType.all, :id, :security_type_name, {include_blank: "Select Issuer Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+        <%= form.collection_select :security_type_id, [], :id, :security_type_name, {include_blank: "Select Issuer Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
       </div>
     </div>
 
@@ -93,10 +93,20 @@
 
     <div class="field d-flex">
       <div class="col-md-3 float-left">
+       <%= form.label :rating_agency%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :rating_agency_id, RatingAgency.all, :id, :rating_agency_name, {include_blank: "Select Rating Agency"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
        <%= form.label :rating%>
       </div>
       <div class="col-md-6 float-left">
-        <%= form.collection_select :rating_id, Rating.all, :id, :rating, {include_blank: "Select Rating"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+        <%= form.collection_select :rating_id, [], :id, :rating, {include_blank: "Select Rating"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
       </div>
     </div>
 
