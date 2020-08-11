@@ -1,0 +1,11 @@
+<%= form_with(model: state, validate: true, local: true) do |form| %>
+
+  <div class="field d-flex">
+    <%= form.label :state_name %>
+    <%= form.text_field :state_name, :validate=> { presence: true }, :class=> "ml-3 pl-2 pr-2 input-width" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary m-top"%>
+  </div>
+<% end %>

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_093524) do
+ActiveRecord::Schema.define(version: 2020_08_11_091857) do
 
-  create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "trade_indicator"
     t.float "ytm"
     t.float "trade_price"
@@ -25,19 +25,33 @@ ActiveRecord::Schema.define(version: 2020_07_28_093524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "interest_frequencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "interest_frequencies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "issuers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "issuers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "securities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "rating_agencies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "rating_agency_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "rating"
+    t.bigint "rating_agency_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rating_agency_id"], name: "index_ratings_on_rating_agency_id"
+  end
+
+  create_table "securities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "issuer_id"
     t.bigint "security_type_id"
     t.bigint "interest_frequency_id"
@@ -50,12 +64,16 @@ ActiveRecord::Schema.define(version: 2020_07_28_093524) do
     t.float "coupon_rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rating_id", null: false
+    t.bigint "rating_agency_id", null: false
     t.index ["interest_frequency_id"], name: "index_securities_on_interest_frequency_id"
     t.index ["issuer_id"], name: "index_securities_on_issuer_id"
+    t.index ["rating_agency_id"], name: "index_securities_on_rating_agency_id"
+    t.index ["rating_id"], name: "index_securities_on_rating_id"
     t.index ["security_type_id"], name: "index_securities_on_security_type_id"
   end
 
-  create_table "security_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "security_types", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "issuer_id"
     t.text "security_type_name"
     t.datetime "created_at", precision: 6, null: false
@@ -63,4 +81,20 @@ ActiveRecord::Schema.define(version: 2020_07_28_093524) do
     t.index ["issuer_id"], name: "index_security_types_on_issuer_id"
   end
 
+  create_table "states", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "state_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "towns", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "town_name"
+    t.bigint "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_towns_on_state_id"
+  end
+
+  add_foreign_key "securities", "rating_agencies"
+  add_foreign_key "securities", "ratings"
 end

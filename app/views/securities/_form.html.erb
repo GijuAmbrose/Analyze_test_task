@@ -1,112 +1,119 @@
+<div class="container">
+  <%= form_with(model: security, validates: true, local: true) do |form| %>
 
-  <div class="container">
-    <%= form_with(model: security, local: true) do |form| %>
-      <% if security.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(security.errors.count, "error") %> prohibited this security from being saved:</h2>
-
-          <ul>
-            <% security.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-          <%= form.label :issuer_name%>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {include_blank: "Select Issuer Name"}, {:class=> "ml-3 pl-2 pr-2 input-width"} %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :issuer_name%>
       </div>
-
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-         <%= form.label :security_type%>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.collection_select :security_type_id, SecurityType.all, :id, :security_type_name, {include_blank: "Select Issuer Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
-        </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :issuer_id, Issuer.all, :id, :name, {include_blank: "Select Issuer Name"}, {:class=> "ml-3 pl-2 pr-2 input-width issuer"} %>
       </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-          <%= form.label :security_name %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.text_field :security_name, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :security_type%>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :security_type_id, [], :id, :security_type_name, {include_blank: "Select Issuer Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-         <%= form.label :isin %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.text_field :isin, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :security_name %>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :security_name, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-          <%= form.label :issue_date %>
-        </div>
-        <div class="col-md-9 float-left date-select">
-          <%= form.date_select :issue_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :isin %>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :isin, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-          <%= form.label :maturity_date %>
-        </div>
-        <div class="col-md-9 float-left date-select">
-          <%= form.date_select :maturity_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :issue_date %>
       </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.date_select :issue_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-         <%= form.label :outstanding_stock %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.text_field :outstanding_stock, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :maturity_date %>
       </div>
+      <div class="col-md-9 float-left date-select">
+        <%= form.date_select :maturity_date, {}, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-         <%= form.label :face_value %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.text_field :face_value, :class=> "ml-3 pl-2 pr-2 input-width"%>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :outstanding_stock %>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :outstanding_stock, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-         <%= form.label :coupon_rate %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.text_field :coupon_rate, :class=> "ml-3 pl-2 pr-2 input-width" %>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :face_value %>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :face_value, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
+    </div>
 
-      <div class="field d-flex">
-        <div class="col-md-3 float-left">
-          <%= form.label :interest_frequency %>
-        </div>
-        <div class="col-md-6 float-left">
-          <%= form.collection_select :interest_frequency_id, InterestFrequency.all, :id, :frequency, {include_blank: "Select Interest Frequency "}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :coupon_rate %>
       </div>
+      <div class="col-md-6 float-left">
+        <%= form.text_field :coupon_rate, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
 
-      <div class="actions">
-        <div class="col-12 float-left">
-          <%= form.submit  "Save", class: "btn btn-primary"%>
-        </div>
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :interest_frequency %>
       </div>
-    <% end %>
-  </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :interest_frequency_id, InterestFrequency.all, :id, :frequency, {include_blank: "Select Interest Frequency "}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :rating_agency%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :rating_agency_id, RatingAgency.all, :id, :rating_agency_name, {include_blank: "Select Rating Agency"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :rating%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :rating_id, [], :id, :rating, {include_blank: "Select Rating"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="col-12 float-left">
+        <%= form.submit  "Save", class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>

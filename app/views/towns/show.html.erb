@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Town</h1>
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">State</th>
+        <th scope="col">Town</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @town.state.state_name%></td>
+        <td><%= @town.town_name %></td>
+      </tr>
+    </tbody>
+	</table>
+
+	<%= link_to 'Edit', edit_town_path(@town) %> |
+	<%= link_to 'Back', towns_path %>
+</div>

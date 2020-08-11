@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<div class="container pull-left">
+	<table class="table table-bordered">
+		<thead>
+      <tr>
+        <th>State name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @state.state_name %></td>
+      </tr>
+    </tbody>
+  </table>
+	<%= link_to 'Edit', edit_state_path(@state) %> |
+	<%= link_to 'Back', states_path %>
+</div>
