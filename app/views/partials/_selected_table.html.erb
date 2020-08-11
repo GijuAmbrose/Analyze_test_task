@@ -1,0 +1,27 @@
+<table class="table table-bordered mt-3">
+  <thead>
+  <tr>
+      <th scope="col">Sl. No.</th>
+      <th scope="col">ISIN</th>
+      <th scope="col">Nomenclature</th>
+      <th scope="col">Date of Issue</th>
+      <th scope="col">Date of Maturity</th>
+      <th scope="col">Interest %</th>
+      <th scope="col">YTM %</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% index = 0%>
+  <% table_datas.each do |key, value|%>
+    <tr >
+      <th ><%=index+=1%></th>
+      <td ><%= value[0] %></td>
+      <td ><%=value[1]%></td>
+      <td ><%= value[2] %></td>
+      <td ><%= value[3] %></td>
+      <td ><%= value[4] %></td>
+      <td ><%=value[5] %></td>
+    </tr>
+  <% end %>
+    </tbody>
+</table>
