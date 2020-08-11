@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :towns
+  resources :states
+  resources :ratings
+  resources :rating_agencies
   resources :interest_frequencies
   resources :securities
   root 'home#index'

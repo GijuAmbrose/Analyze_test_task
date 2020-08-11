@@ -1,16 +1,5 @@
 
-<%= form_with(model: interest_frequency, local: true) do |form| %>
-  <% if interest_frequency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(interest_frequency.errors.count, "error") %> prohibited this interest_frequency from being saved:</h2>
-
-      <ul>
-        <% interest_frequency.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: interest_frequency, validates: true, local: true) do |form| %>
 
   <div class="field d-flex">
     <%= form.label :frequency%>

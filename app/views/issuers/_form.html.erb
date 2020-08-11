@@ -1,16 +1,5 @@
 
-<%= form_with(model: issuer, local: true) do |form| %>
-  <% if issuer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(issuer.errors.count, "error") %> prohibited this issuer from being saved:</h2>
-
-      <ul>
-        <% issuer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: issuer, validates: true, local: true) do |form| %>
 
   <div class="field d-flex">
     <%= form.label :name %>

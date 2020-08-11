@@ -73,6 +73,6 @@ class SecuritiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def security_params
-      params.require(:security).permit(:security_name, :isin, :issue_date, :maturity_date, :outstanding_stock, :face_value, :coupon_rate, :issuer_id, :security_type_id, :interest_frequency_id)
+      params.require(:security).permit(:security_name, :isin, :issue_date, :maturity_date, :outstanding_stock, :face_value, :coupon_rate, :issuer_id, :security_type_id, :interest_frequency_id, :rating_id)
     end
 end

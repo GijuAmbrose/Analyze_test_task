@@ -29,7 +29,7 @@ class SecurityTypesController < ApplicationController
     @security_type = SecurityType.new(security_type_params)
 
     respond_to do |format|
-      if @security_type.save!
+      if @security_type.save
         format.html { redirect_to @security_type, notice: 'Security type was successfully created.' }
         format.json { render :show, status: :created, location: @security_type }
       else

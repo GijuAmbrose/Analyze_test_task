@@ -11,6 +11,8 @@ require("channels")
 require("jquery")
 require("easy-autocomplete")
 require ("packs/issuer")
+require('@client-side-validations/client-side-validations')
+require ('rails.validations')
 
 
 

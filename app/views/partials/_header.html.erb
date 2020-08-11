@@ -4,7 +4,8 @@
 
    <nav class="navbar navbar-default navbar-tall navbar-full">
     <div class="navbar-header">
-      <%=link_to("Home", root_path, :class => "text-white mr-3" ) %>
+      <%=link_to("General Settings", root_path, :class => "text-white mr-3" ) %>
+      <%=link_to("Security Settings", home_settings_path, :class => "text-white mr-3" ) %>
       <%=link_to("Issuer", issuers_path, :class => "text-white mr-3")%>
       <%=link_to("Security", securities_path, :class => "text-white mr-3")%>
       <%=link_to("Interest Frequency", interest_frequencies_path, :class => "text-white mr-3")%>

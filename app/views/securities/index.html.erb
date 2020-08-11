@@ -16,6 +16,7 @@
         <th>Face value</th>
         <th>Coupon rate</th>
         <th>Interest Frequency</th>
+        <th>Rating</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -33,6 +34,7 @@
           <td><%= security.face_value %></td>
           <td><%= security.coupon_rate %></td>
           <td><%= security.interest_frequency.frequency%></td>
+          <td><%= security.rating.rating%></td>
           <td><%= link_to 'Show', security %></td>
           <td><%= link_to 'Edit', edit_security_path(security) %></td>
           <td><%= link_to 'Destroy', security, method: :delete, data: { confirm: 'Are you sure?' } %></td>

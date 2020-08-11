@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Rating</h1>
+
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Rating Agency Name</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      	<td><%= @rating.rating_agency.rating_agency_name%></td>
+      	<td><%= @rating.rating%></td>
+      </tr>
+    </tbody>
+
+		<%= link_to 'Edit', edit_rating_path(@rating) %> |
+		<%= link_to 'Back', ratings_path %>
+	</table>
+</div>
+
+

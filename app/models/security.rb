@@ -4,6 +4,7 @@ class Security < ApplicationRecord
   belongs_to :issuer
   belongs_to :security_type
   belongs_to :interest_frequency
+  belongs_to :rating
   self.per_page = 10
 
   def self.to_csv
@@ -58,5 +59,8 @@ class Security < ApplicationRecord
     @coupon_rate = row["Coupon Rate"].to_f
   end
 
+
+  validates_presence_of :issuer_id, :security_type_id, :interest_frequency_id, :security_name, 
+    :isin, :issue_date, :maturity_date, :outstanding_stock, :face_value, :coupon_rate
 end
 

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h1 class="mb-4 mt-5">Security Types</h1>
+  <h1 class="mb-4 mt-5">Ratings</h1>
 
   <table class="table table table-bordered">
     <thead>
@@ -16,8 +16,8 @@
         <td><%= @security_type.security_type_name %></td>
       </tr>
     </tbody>
+    <%= link_to 'Edit', edit_security_type_path(@security_type) %> |
+    <%= link_to 'Back', security_types_path %>
   </table>
+</div>
 
-
-<%= link_to 'Edit', edit_security_type_path(@security_type) %> |
-<%= link_to 'Back', security_types_path %>

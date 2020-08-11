@@ -1,0 +1,11 @@
+<%= form_with(model: rating_agency, validate:true, local: true) do |form| %>
+
+  <div class="field d-flex">
+    <%= form.label :rating_agency_name %>
+    <%= form.text_field :rating_agency_name, :class=> "ml-3 pl-2 pr-2 input-width"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary m-top"%>
+  </div>
+<% end %>
