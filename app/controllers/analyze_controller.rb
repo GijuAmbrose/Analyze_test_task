@@ -16,4 +16,33 @@ class AnalyzeController < ApplicationController
       format.js # actually means: if the client ask for js -> return file.js
     end
   end
+
+  def graph_filter
+    graph_filter = ArchivalNdsom.where(isin: params["isin_ids"], trade_date: params["startDate"] .. params["fromDate"]).uniq(&:trade_price)
+    array_of_graph_data = []
+    graph_filter.group_by(&:isin).each{|key, value| array_of_graph_data << {:name=> "#{key}", :data=> value.map(&:trade_price)}}
+    @graph_data = array_of_graph_data
+    @time_data = graph_filter.map(&:trade_time).uniq
+    respond_to do |format|
+      format.html
+      format.js # actually means: if the client ask for js -> return file.js
+    end
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

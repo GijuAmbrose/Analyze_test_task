@@ -1,0 +1,1 @@
+$("#analyse-graph-data").html("<%= escape_javascript(render partial: 'partials/high_chart', locals: { graph_data: @graph_data.to_json, graph_time_values: @time_data } ) %>")
