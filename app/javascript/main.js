@@ -9,6 +9,7 @@ $(document).ready(function() {
         dataType: "script",
         data: {isis: $(this).val(), ajax_call: true},
         success: function(response) {
+          $(".analyse-select").prop("checked", false);
           console.log(true)
         }
       });
@@ -18,9 +19,8 @@ $(document).ready(function() {
     values = []
     $(".show-button").show();
     $(".show-date-picker").show();
-    $.each($("input[name='plot-to-table']:checked"), function(){
-      values.push([$(".analyse-row-"+this.value).find('td')[0].innerText, $(".analyse-row-"+this.value).find('td')[1].innerText, $(".analyse-row-"+this.value).find('td')[2].innerText, $(".analyse-row-"+this.value).find('td')[3].innerText, $(".analyse-row-"+this.value).find('td')[4].innerText, $(".analyse-row-"+this.value).find('td')[5].innerText,$(".analyse-row-"+this.value).find('td')[6].innerText] )
-    });
+    selectField();
+    pushValues();
     $.ajax({
       url: '/filter_by',
       type: "GET",
@@ -32,13 +32,25 @@ $(document).ready(function() {
     })
   });
 
+  function selectField(){
+    $.each($("input[name='plot-to-table']:checked"), function(){
+      values.push([$(".analyse-row-"+this.value).find('td')[0].innerText, $(".analyse-row-"+this.value).find('td')[1].innerText, $(".analyse-row-"+this.value).find('td')[2].innerText, $(".analyse-row-"+this.value).find('td')[3].innerText, $(".analyse-row-"+this.value).find('td')[4].innerText, $(".analyse-row-"+this.value).find('td')[5].innerText,$(".analyse-row-"+this.value).find('td')[6].innerText] )
+    });
+  }
+
+  function pushValues(){
+    $.each($("input[name='plot-to-graph']"), function(){
+      values.push([$(".analyse-inner-row-"+this.value).find('td')[0].innerText, $(".analyse-inner-row-"+this.value).find('td')[1].innerText, $(".analyse-inner-row-"+this.value).find('td')[2].innerText, $(".analyse-inner-row-"+this.value).find('td')[3].innerText, $(".analyse-inner-row-"+this.value).find('td')[4].innerText, $(".analyse-inner-row-"+this.value).find('td')[5].innerText,$(".analyse-inner-row-"+this.value).find('td')[6].innerText] )
+    });
+  }
+
   $(".plot-graph").on('click', function(){
     isinIds = []
     if ($("#from_date").val() == ""){
       alert("Please select a Date Range");
     }
-    $.each($("input[name='plot-to-table']:checked"), function(){
-      isinIds.push($(".analyse-row-"+this.value).find('td')[0].innerText)
+    $.each($("input[name='plot-to-graph']:checked"), function(){
+      isinIds.push($(".analyse-inner-row-"+this.value).find('td')[0].innerText)
     });
     $.ajax({
       url: '/filter_for_graph',
