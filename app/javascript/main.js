@@ -2,14 +2,13 @@ $(document).ready(function() {
 
 
   var isin_array = [];
-  $("#isin-filter").on('change paste keyup', function() {
+  $("#isin-filter").on('keyup paste', function() {
      $.ajax({
         url: '/filter_by',
         type: "GET",
         dataType: "script",
         data: {isis: $(this).val(), ajax_call: true},
         success: function(response) {
-          $(".analyse-select").prop("checked", false);
           console.log(true)
         }
       });
