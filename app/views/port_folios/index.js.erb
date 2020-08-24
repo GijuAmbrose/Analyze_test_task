@@ -1,0 +1,3 @@
+<% if params["values"].present?%>
+	$(".port-folio-selected-table").html("<%= escape_javascript(render partial: 'partials/selected_port_folio', locals: { table_datas: @values } ) %>")
+<% end %>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-flex">
+    <div class="float-left">
+      <label>Client</label>
+    </div>
+    <div class="col-md-6 float-left">
+      <%= select_tag "client", options_from_collection_for_select(Client.all, 'id', 'name', ['Select Client']), class: "ml-3 pl-2 pr-2 input-width client-portfolio"%>
+    </div>
+  </div>
+
+    <div class="port-folio-selected-table"></div>
+
+    <div class="portfolio-table">
+      <%= render partial: "partials/security_table_port_folio", locals: {table_datas: @analyse_data}%>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,10 @@
 	<h2 class="mt-5 mb-3">General Settings</h2>
 	<div>
 		<div class="col-md-2 float-left"><%= button_to "Settings", home_settings_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-2 float-left"><%= button_to "Add Sector", new_sector_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-2 float-left"><%= button_to "Add Client Type", new_client_type_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-2 float-left"><%= button_to "Add Client", new_client_path, :class => "btn btn-modify", :method => :get %></div>
+		<div class="col-md-2 float-left"><%= button_to "Port Folio Settings", port_folios_index_path, :class => "btn btn-modify", :method => :get %></div>
 		<div class="col-md-2 float-left"><%= button_to "Add States", new_state_path, :class => "btn btn-modify", :method => :get %></div>
 		<div class="col-md-2 float-left"><%= button_to "Add Towns", new_town_path, :class => "btn btn-modify", :method => :get %></div>
 		<div class="col-md-2 float-left"><%= button_to "Add Security", new_security_path, :class => "btn btn-modify", :method => :get %></div>

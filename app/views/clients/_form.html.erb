@@ -1,0 +1,120 @@
+<div class="container">
+  <%= form_with(model: client, validates: true, local: true) do |form| %>
+    
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :sector%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :sector_id, Sector.all, :id, :sector_name, {include_blank: "Select Sector"}, {:class=> "ml-3 pl-2 pr-2 input-width sector"} %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :client_type%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :client_type_id, [], :id, :client_type, {include_blank: "Select Client Type"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :name %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :name, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :address %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :address, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
+    </div>
+
+      <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :state%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :state_id, State.all, :id, :state_name, {include_blank: "Select State"}, {:class=> "ml-3 pl-2 pr-2 input-width state"} %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+       <%= form.label :city%>
+      </div>
+      <div class="col-md-6 float-left">
+        <%= form.collection_select :town_id, [], :id, :town_name, {include_blank: "Select Town"}, {:class=> "ml-3 pl-2 pr-2 input-width"}%>
+      </div>
+    </div>
+
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :pin %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :pin, :class=> "ml-3 pl-2 pr-2 input-width"%>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :phone %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.number_field :phone, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :email %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :email, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :website %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :website, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :aum %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :aum, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="field d-flex">
+      <div class="col-md-3 float-left">
+        <%= form.label :subdomain %>
+      </div>
+      <div class="col-md-3 float-left">
+        <%= form.text_field :subdomain, :class=> "ml-3 pl-2 pr-2 input-width" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="col-12 float-left">
+        <%= form.submit class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>
