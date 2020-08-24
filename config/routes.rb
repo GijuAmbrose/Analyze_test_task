@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get '/issuer_security', to: 'securities#issuer_security'
   get '/rating_agency_security', to: 'securities#rating_agency_security'
+  get '/filter_for_graph', to: 'analyze#graph_filter'
   resources :security_types
   resources :issuers
   resources :archival_ndsoms

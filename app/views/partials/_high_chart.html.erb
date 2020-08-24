@@ -1,0 +1,63 @@
+<div class="container" id="analyse-page-line-chart"></div>
+
+<script type="text/javascript">
+  Highcharts.chart('analyse-page-line-chart', {
+
+    title: {
+        text: 'Time-Trade-Price-Graph'
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    xAxis: {
+      categories: <%= raw graph_time_values.map{|x| x.to_s}%>,
+      type: "category",
+      startOnTick: true,
+      plotLines: [{
+          color: '#000', // Red
+          width: 1,
+          dashStyle: 'Dash'
+        }]
+    },
+
+    yAxis: {
+        title: {
+            text: 'Trade Price'
+        }
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+        }
+    },
+
+    series: <%= raw graph_data%>,
+
+    responsive: {
+      rules: [{
+          condition: {
+              maxWidth: 500
+          },
+          chartOptions: {
+              legend: {
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom'
+              }
+          }
+      }]
+    }
+
+});
+</script>

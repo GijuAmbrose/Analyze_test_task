@@ -39,3 +39,15 @@
 div.field_with_errors div.ui-effects-wrapper {
   display: inline-block !important;
 }
+
+#c-hidden{
+    display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+.btn-color{
+	background: #7eb7e8 !important;
+}
