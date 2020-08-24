@@ -3,12 +3,6 @@ class ArchivalNdsom < ApplicationRecord
 
   self.per_page = 20
 
-
-  scope  :fetch_analyse_data, -> {select("securities.isin", "interest_frequencies.frequency", "securities.interest_frequency_id", "securities.issue_date", "securities.maturity_date", "securities.id", "archival_ndsoms.ytm", "archival_ndsoms.id as a_id", "archival_ndsoms.trade_price")
-                                  .joins("INNER JOIN securities ON securities.isin = archival_ndsoms.isin
-                                  JOIN interest_frequencies ON interest_frequencies.id = securities.interest_frequency_id ORDER BY securities.isin").uniq(&:isin)
-                                  }
-
   def self.import(file)
     csv_text = File.read(file.path)
     csv = CSV.parse(csv_text, :headers => true)

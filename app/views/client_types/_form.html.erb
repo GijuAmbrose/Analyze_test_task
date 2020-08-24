@@ -1,0 +1,23 @@
+<%= form_with(model: client_type, local: true) do |form| %>
+
+  <div class="field d-flex">
+    <div class="col-md-3 float-left">
+     <%= form.label :sector_name%>
+    </div>
+    <div class="col-md-6 float-left">
+      <%= form.collection_select :sector_id, Sector.all, :id, :sector_name, {:include_blank=> "Select Sector Name"}, :class=> "ml-3 pl-2 pr-2 input-width"%>
+    </div>
+  </div>
+  <div class="field d-flex">
+    <div class="col-md-3 float-left">
+      <%= form.label :client_type %>
+    </div>
+    <div class="col-md-6 float-left">
+      <%= form.text_field :client_type, placeholder: "Enter Client Type Name", :class=> "ml-3 pl-2 pr-2 input-width" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

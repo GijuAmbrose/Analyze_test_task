@@ -3,4 +3,5 @@ class Town < ApplicationRecord
   validates :town_name, uniqueness: { scope: :town_name }
   validates :town_name, presence: true
   validates :state_id, presence: true
+  has_many :clients
 end

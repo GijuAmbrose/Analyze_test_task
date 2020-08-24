@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Client Types</h1>
+
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Sector Name</th>
+        <th scope="col">Client type</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @client_types.each do |client_type| %>
+        <tr>
+          <td><%= client_type.sector.sector_name%></td>
+          <td><%= client_type.client_type %></td>
+          <td><%= link_to 'Show', client_type %></td>
+          <td><%= link_to 'Edit', edit_client_type_path(client_type) %></td>
+          <td><%= link_to 'Destroy', client_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Client Type', new_client_type_path %>
+</div>
