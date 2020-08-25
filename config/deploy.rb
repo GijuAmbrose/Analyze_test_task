@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "trade_analyse"
-set :repo_url, "github.com/GijuAmbrose/Analyze_test_task.git"
+set :repo_url, "git@github.com:GijuAmbrose/Analyze_test_task.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
