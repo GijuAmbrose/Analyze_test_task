@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: test_task_analyse_production
-  username: test_task_analyse
-  password: <%= ENV['TEST_TASK_ANALYSE_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
