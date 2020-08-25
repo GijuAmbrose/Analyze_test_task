@@ -14,16 +14,16 @@
   </thead>
   <tbody>
     <% index = 0%>
-  <% table_datas.each do |key, value|%>
+  <% table_datas.each do |value|%>
     <tr class="port-folio-inner-row-<%= index+=1%>">
       <th scope="row" class=""><%= index%></th>
-      <td class="port-folio-inner-isin" value="<%= value[0] %>"><%= value[0] %></td>
-      <td class="port-folio-inner-nomenclature" value="value[1]"><%=value[1]%></td>
-      <td class="port-folio-inner-issue-dt" value="<%= value[2] %>"><%= value[2] %></td>
-      <td class="port-folio-inner-mature-dt" value="<%= value[3] %>"><%= value[3] %></td>
-      <td class="port-folio-inner-trade-price" value="<%= value[4] %>"><%= value[4] %></td>
-      <td class="port-folio-inner-freq" value="<%= value[5] %>"><%= value[5] %></td>
-      <td class="port-folio-inner-ytm" value="<%= value[6] %>"><%=value[6] %></td>
+      <td class="port-folio-inner-isin" value="<%= value.isin %>"><%= value.isin%></td>
+      <td class="port-folio-inner-nomenclature" value="6.7% GS 2030">6.7% GS 2030</td>
+      <td class="port-folio-inner-issue-dt" value="<%= value.issue_date %>"><%= value.issue_date %></td>
+      <td class="port-folio-inner-mature-dt" value="<%= value.maturity_date %>"><%= value.maturity_date %></td>
+      <td class="port-folio-inner-trade-price" value="<%=value.trade_price %>"><%= value.trade_price %></td>
+      <td class="port-folio-inner-freq" value="<%= value.frequency %>"><%= value.frequency %></td>
+      <td class="port-folio-inner-ytm" value="<%= value.ytm %>"><%=value.ytm %></td>
       <td class="port-folio-inner-select-td"><label class="btn btn-color">
         <input type="checkbox" name="port-folio-check" class="port-folio-inner-select" id="c-hidden" value="<%= index%>"/> Select
       </label></td>

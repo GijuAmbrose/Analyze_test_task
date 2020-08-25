@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_093048) do
+ActiveRecord::Schema.define(version: 2020_08_25_050147) do
 
   create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "trade_indicator"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2020_08_24_093048) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "port_folio_securities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "port_folio_id", null: false
+    t.bigint "security_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["port_folio_id"], name: "index_port_folio_securities_on_port_folio_id"
+    t.index ["security_id"], name: "index_port_folio_securities_on_security_id"
+  end
+
   create_table "port_folios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "client_id"
     t.datetime "created_at", precision: 6, null: false
@@ -108,10 +117,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_093048) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "rating_id", null: false
     t.bigint "rating_agency_id", null: false
-    t.bigint "port_folio_id", null: false
     t.index ["interest_frequency_id"], name: "index_securities_on_interest_frequency_id"
     t.index ["issuer_id"], name: "index_securities_on_issuer_id"
-    t.index ["port_folio_id"], name: "index_securities_on_port_folio_id"
     t.index ["rating_agency_id"], name: "index_securities_on_rating_agency_id"
     t.index ["rating_id"], name: "index_securities_on_rating_id"
     t.index ["security_type_id"], name: "index_securities_on_security_type_id"
@@ -139,6 +146,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_093048) do
     t.index ["state_id"], name: "index_towns_on_state_id"
   end
 
+  add_foreign_key "port_folio_securities", "port_folios"
+  add_foreign_key "port_folio_securities", "securities"
   add_foreign_key "securities", "rating_agencies"
   add_foreign_key "securities", "ratings"
 end
