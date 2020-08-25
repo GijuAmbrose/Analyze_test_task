@@ -13,8 +13,6 @@ require("easy-autocomplete")
 require ("packs/issuer")
 require('@client-side-validations/client-side-validations')
 require("main")
-require("chartkick")
-require("chart.js")
 
 
 
