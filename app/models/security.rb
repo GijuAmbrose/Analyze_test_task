@@ -6,7 +6,7 @@ class Security < ApplicationRecord
   belongs_to :interest_frequency
   belongs_to :rating
   belongs_to :rating_agency
-  belongs_to :portfolio, optional: true
+  has_many :port_folio_security
 
 
   self.per_page = 10

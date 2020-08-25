@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/sector_client_type', to: 'clients#sector_client_type'
   get '/state_city', to: 'clients#state_city'
   get '/port_folio_filter', to: 'port_folios#index'
+  get '/port_folio_client_filter', to: 'port_folios#index'
   resources :security_types
   resources :issuers
   resources :archival_ndsoms

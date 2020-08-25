@@ -144,7 +144,7 @@ $(document).ready(function() {
   $(".port-folio-select-td").on('click', function(){
     var client_id = $(".client-portfolio").val();
     portFolioSelectField();
-    $("input[name='port-folio-table']:checked").closest("tr").remove();
+    $("input[name='port-folio-table']:checked").closest("tr").hide();
     $.ajax({
       url: '/port_folio_filter',
       type: "GET",
@@ -158,9 +158,22 @@ $(document).ready(function() {
 
   function portFolioSelectField(){
     $.each($("input[name='port-folio-table']:checked"), function(){
-      values.push([$(".port-folio-row-"+this.value).find('td')[0].innerText, $(".port-folio-row-"+this.value).find('td')[1].innerText, $(".port-folio-row-"+this.value).find('td')[2].innerText, $(".port-folio-row-"+this.value).find('td')[3].innerText, $(".port-folio-row-"+this.value).find('td')[4].innerText, $(".port-folio-row-"+this.value).find('td')[5].innerText,$(".port-folio-row-"+this.value).find('td')[6].innerText, $(".port-folio-row-"+this.value).find('td')[8].innerText])    
+      values.push([$(".port-folio-row-"+this.value).find('td')[8].innerText])    
     });
   }
+
+  $(".client-portfolio").on('change', function(){
+    var client_id = $(".client-portfolio").val();
+    $.ajax({
+      url: '/port_folio_client_filter',
+      type: "GET",
+      dataType: "script",
+      data: {client_id: client_id},
+      success: function(){
+        console.log(true)
+      }
+    })
+  });
 });
 
         

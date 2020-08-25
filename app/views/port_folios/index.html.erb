@@ -4,7 +4,7 @@
       <label>Client</label>
     </div>
     <div class="col-md-6 float-left">
-      <%= select_tag "client", options_from_collection_for_select(Client.all, 'id', 'name', ['Select Client']), class: "ml-3 pl-2 pr-2 input-width client-portfolio"%>
+      <%= select_tag "client", options_from_collection_for_select(Client.all, 'id', 'name'), :prompt => "--select client--", class: "ml-3 pl-2 pr-2 input-width client-portfolio"%>
     </div>
   </div>
 
