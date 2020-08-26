@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function() {
 
+$(document).on('turbolinks:load', function() {
   var values = [];
   var isin_array = [];
   $("#isin-filter").on('keyup paste', function() {
@@ -142,7 +142,6 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-
   $(".port-folio-select-td").on('click', function(){
     var client_id = $(".client-portfolio").val();
     portFolioSelectField();
@@ -202,8 +201,6 @@ $(document).on('turbolinks:load', function() {
   //     }
   //   });
   // });
-
-
 
 });
 

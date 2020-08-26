@@ -24,7 +24,7 @@ class PortFoliosController < ApplicationController
       format.js # actually means: if the client ask for js -> return file.js
     end
   end
-
+  
   # def filter_by_isin(values,isis, string)
   #   if string == 'analyse'
   #     @analyse_data = values.select { |x| x.isin.match?(isis) }
