@@ -18,18 +18,18 @@
   <% table_datas.each_with_index do |data, index|%>
     <tr class="port-folio-row-<%= index+1%>">
       <th scope="row" class=""><%= index + 1 %></th>
-      <td class="analyse-isin" value="<%= data.isin %>"><%= data.isin %></td>
-      <td class="analyse-nomenclature" value="6.7% GS 2030">6.7% GS 2030</td>
-      <td class="analyse-issue-dt" value="<%= data.issue_date %>"><%= data.issue_date %></td>
-      <td class="analyse-mature-dt" value="<%= data.maturity_date %>"><%= data.maturity_date %></td>
-      <td class="analyse-trade-price" value="<%= data.trade_price %>"><%= data.trade_price %></td>
-      <td class="analyse-freq" value="<%= data.frequency %>"><%= data.frequency %></td>
-      <td class="analyse-ytm" value="<%= data.ytm %>"><%= data.ytm %></td>
+      <td class="port-folio-isin" value="<%= data.isin %>"><%= data.isin %></td>
+      <td class="port-folio-nomenclature" value="6.7% GS 2030">6.7% GS 2030</td>
+      <td class="port-folio-issue-dt" value="<%= data.issue_date %>"><%= data.issue_date %></td>
+      <td class="port-folio-mature-dt" value="<%= data.maturity_date %>"><%= data.maturity_date %></td>
+      <td class="port-folio-trade-price" value="<%= data.trade_price %>"><%= data.trade_price %></td>
+      <td class="port-folio-freq" value="<%= data.frequency %>"><%= data.frequency %></td>
+      <td class="port-folio-ytm" value="<%= data.ytm %>"><%= data.ytm %></td>
       <td class="port-folio-select-td"><label class="btn btn-color">
-          <input type="checkbox" name="port-folio-table" class="analyse-select" id="c-hidden" value="<%= index+1%>"/> Add
+          <input type="checkbox" name="port-table" class="port-folio-select" value="<%= index+1%>"/> Add
         </label></td>
-      <td class="analyse-ytm hidden" ><%= data.id %></td>
-      <td class="analyse-ytm hidden"><%= data.a_id %></td>
+      <td class="port-folio-ytm hidden" ><%= data.id %></td>
+      <td class="port-folio-ytm hidden"><%= data.a_id %></td>
     </tr>
   <% end %>
   </tbody>

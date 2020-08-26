@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/state_city', to: 'clients#state_city'
   get '/port_folio_filter', to: 'port_folios#index'
   get '/port_folio_client_filter', to: 'port_folios#index'
+  get '/port_folio_isin_sort', to: 'port_folios#sort'
+  get '/port_folio_isin_select', to: 'port_folios#sort'
   resources :security_types
   resources :issuers
   resources :archival_ndsoms

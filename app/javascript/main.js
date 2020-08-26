@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
+
   var values = [];
   var isin_array = [];
   $("#isin-filter").on('keyup paste', function() {
@@ -118,7 +119,7 @@ $(document).ready(function() {
                   .text(value)); 
         });
       }
-  });
+    });
   });
 
   $(".state").change(function() {
@@ -141,23 +142,26 @@ $(document).ready(function() {
     });
   });
 
+
   $(".port-folio-select-td").on('click', function(){
     var client_id = $(".client-portfolio").val();
     portFolioSelectField();
-    $("input[name='port-folio-table']:checked").closest("tr").hide();
+    /*$("input[name='port-table']:checked").closest("tr").hide();*/
     $.ajax({
       url: '/port_folio_filter',
       type: "GET",
       dataType: "script",
       data: {values: values, client_id: client_id},
       success: function(response){
-        console.log(true)
+        $.each($("input[name='port-table']:checked"), function(){
+          $(this).prop("checked", false);
+        });
       }
     })
   });
 
   function portFolioSelectField(){
-    $.each($("input[name='port-folio-table']:checked"), function(){
+    $.each($("input[name='port-table']:checked"), function(){
       values.push([$(".port-folio-row-"+this.value).find('td')[8].innerText])    
     });
   }
@@ -170,10 +174,37 @@ $(document).ready(function() {
       dataType: "script",
       data: {client_id: client_id},
       success: function(){
-        console.log(true)
+        values = [];
       }
     })
   });
+
+  // $("#isin-selected").on('keyup paste', function() {
+  //   $.ajax({
+  //     url: '/port_folio_isin_select',
+  //     type: "GET",
+  //     dataType: "script",
+  //     data: {isis: $(this).val(), ajax_call: 'selected'},
+  //     success: function(response) {
+  //       console.log(true)
+  //     }
+  //   });
+  // });
+
+  // $("#isin-portfolio-filter").on('keyup paste', function() {
+  //   $.ajax({
+  //     url: '/port_folio_isin_sort',
+  //     type: "GET",
+  //     dataType: "script",
+  //     data: {isis: $(this).val(), ajax_call: 'analyse'},
+  //     success: function(response) {
+  //       console.log(true)
+  //     }
+  //   });
+  // });
+
+
+
 });
 
         

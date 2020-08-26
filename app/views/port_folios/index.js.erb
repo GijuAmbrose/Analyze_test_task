@@ -1,7 +1,8 @@
 <% if @values.present?%>
-	$(".port-folio-selected-table").show();
-	$(".port-folio-selected-table").html("<%= escape_javascript(render partial: 'partials/selected_port_folio', locals: { table_datas: @values } ) %>")
+	$(".port-selected-table").show();
+	$(".port-selected-table").html("<%= escape_javascript(render partial: 'partials/selected_port_folio', locals: { table_datas: @values } ) %>")
+	$(".portfolios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
 <% else%>
-	$(".port-folio-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
-	$(".port-folio-selected-table").hide();
+	$(".portfolios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
+	$(".port-selected-table").hide();
 <% end %>

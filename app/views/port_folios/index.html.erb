@@ -8,9 +8,14 @@
     </div>
   </div>
 
-    <div class="port-folio-selected-table"></div>
-
-    <div class="portfolio-table">
+    <div class="port-selected-table"></div>
+    <!-- <div class="d-flex row mt-3">
+      <div class="d-analysis col-2 float-left">
+          <label>By Name / ISIN</label>
+          <input type="text" class="w-100" alt="" id="isin-portfolio-filter" />
+      </div>
+    </div> -->
+    <div class="port-folios-table">
       <%= render partial: "partials/security_table_port_folio", locals: {table_datas: @analyse_data}%>
     </div>
   </div>
