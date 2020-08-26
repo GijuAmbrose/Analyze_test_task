@@ -6,7 +6,16 @@ class Security < ApplicationRecord
   belongs_to :interest_frequency
   belongs_to :rating
   belongs_to :rating_agency
+  has_many :port_folio_security
+
+
   self.per_page = 10
+
+  scope  :fetch_analyse_data, -> {select("securities.isin", "interest_frequencies.frequency", "securities.interest_frequency_id", "securities.issue_date", "securities.maturity_date", "securities.id", "archival_ndsoms.ytm", "archival_ndsoms.id as a_id", "archival_ndsoms.trade_price")
+                                  .joins("INNER JOIN archival_ndsoms ON archival_ndsoms.isin = securities.isin
+                                  JOIN interest_frequencies ON interest_frequencies.id = securities.interest_frequency_id ORDER BY securities.isin").uniq(&:isin)
+                                  }
+
 
   def self.to_csv
     attributes = %w{id issuer_id security_type_id security_type_id security_name isin issue_date maturity_date outstanding_stock face_value coupon_rate created_at updated_at}

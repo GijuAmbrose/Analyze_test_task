@@ -1,0 +1,18 @@
+<div class="container">
+	<h1 class="mb-4 mt-5">New Client</h1>
+
+	<%= render 'form', client: @client %>
+	
+	<div class="col-12 mt-3 float-left pl-30">
+		<%= link_to 'Back', clients_path %>
+	</div>
+</div>
+<style type="text/css">
+   .pl-30{
+      padding-left: 30px;
+   }
+   .export-file{
+    background: #0c79fa !important;
+    color: white !important;
+   }
+ </style>

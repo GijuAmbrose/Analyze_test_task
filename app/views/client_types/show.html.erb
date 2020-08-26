@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="mb-4 mt-5">Client Types</h1>
+  <table class="table table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Sector Name</th>
+        <th scope="col">Client Type</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @client_type.sector.sector_name%></td>
+        <td><%= @client_type.client_type %></td>
+      </tr>
+    </tbody>
+
+		<%= link_to 'Edit', edit_client_type_path(@client_type) %> |
+		<%= link_to 'Back', client_types_path %>
+	</table>
+</div>
+

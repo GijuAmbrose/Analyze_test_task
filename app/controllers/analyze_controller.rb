@@ -2,7 +2,7 @@ class AnalyzeController < ApplicationController
 
   def index
     if params["values"].nil?
-      @analyse_data = ArchivalNdsom.fetch_analyse_data
+      @analyse_data = Security.fetch_analyse_data
       if params[:ajax_call].present? && params[:ajax_call] == "true" && params[:isis].present?
          @analyse_data = @analyse_data.select { |x| x.isin.match?(params[:isis]) }
       else

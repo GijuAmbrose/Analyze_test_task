@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_091857) do
+ActiveRecord::Schema.define(version: 2020_08_25_050147) do
 
   create_table "archival_ndsoms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "trade_indicator"
@@ -25,6 +25,35 @@ ActiveRecord::Schema.define(version: 2020_08_11_091857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "client_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "sector_id"
+    t.string "client_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sector_id"], name: "index_client_types_on_sector_id"
+  end
+
+  create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "client_type_id"
+    t.bigint "sector_id"
+    t.bigint "state_id"
+    t.bigint "town_id"
+    t.string "name"
+    t.string "address"
+    t.string "pin"
+    t.string "phone"
+    t.string "email"
+    t.string "website"
+    t.string "aum"
+    t.string "subdomain"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_type_id"], name: "index_clients_on_client_type_id"
+    t.index ["sector_id"], name: "index_clients_on_sector_id"
+    t.index ["state_id"], name: "index_clients_on_state_id"
+    t.index ["town_id"], name: "index_clients_on_town_id"
+  end
+
   create_table "interest_frequencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "frequency"
     t.datetime "created_at", precision: 6, null: false
@@ -35,6 +64,22 @@ ActiveRecord::Schema.define(version: 2020_08_11_091857) do
     t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "port_folio_securities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "port_folio_id", null: false
+    t.bigint "security_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["port_folio_id"], name: "index_port_folio_securities_on_port_folio_id"
+    t.index ["security_id"], name: "index_port_folio_securities_on_security_id"
+  end
+
+  create_table "port_folios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_port_folios_on_client_id"
   end
 
   create_table "rating_agencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -49,6 +94,12 @@ ActiveRecord::Schema.define(version: 2020_08_11_091857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["rating_agency_id"], name: "index_ratings_on_rating_agency_id"
+  end
+
+  create_table "sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "sector_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "securities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -95,6 +146,8 @@ ActiveRecord::Schema.define(version: 2020_08_11_091857) do
     t.index ["state_id"], name: "index_towns_on_state_id"
   end
 
+  add_foreign_key "port_folio_securities", "port_folios"
+  add_foreign_key "port_folio_securities", "securities"
   add_foreign_key "securities", "rating_agencies"
   add_foreign_key "securities", "ratings"
 end
