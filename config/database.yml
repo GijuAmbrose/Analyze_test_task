@@ -51,5 +51,5 @@ production:
   encoding: utf8mb4
   pool: 5 
   database: <%= ENV['DATABASE_URL'] %>
-  username: <%= ENV ['USERNAME'] %>
-  password: <%= ENV ['DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
