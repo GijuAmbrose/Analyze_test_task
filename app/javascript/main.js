@@ -2,6 +2,7 @@
 $(document).on('turbolinks:load', function() {
   var values = [];
   var isin_array = [];
+  var removeValues = [];
   $("#isin-filter").on('keyup paste', function() {
      $.ajax({
         url: '/filter_by',
@@ -142,10 +143,9 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $(".port-folio-select-td").on('click', function(){
+  $(document).on('click', ".port-folio-select-td" ,function (e){
     var client_id = $(".client-portfolio").val();
     portFolioSelectField();
-    /*$("input[name='port-table']:checked").closest("tr").hide();*/
     $.ajax({
       url: '/port_folio_filter',
       type: "GET",
@@ -174,34 +174,58 @@ $(document).on('turbolinks:load', function() {
       data: {client_id: client_id},
       success: function(){
         values = [];
+        removeValues= [];
       }
     })
   });
 
-  // $("#isin-selected").on('keyup paste', function() {
-  //   $.ajax({
-  //     url: '/port_folio_isin_select',
-  //     type: "GET",
-  //     dataType: "script",
-  //     data: {isis: $(this).val(), ajax_call: 'selected'},
-  //     success: function(response) {
-  //       console.log(true)
-  //     }
-  //   });
-  // });
+  $(document).on('keyup paste', "#isin-selected" ,function (e){
+    var client_id = $(".client-portfolio").val();
+    $.ajax({
+      url: '/port_folio_isin_select',
+      type: "GET",
+      dataType: "script",
+      data: {isis: $(this).val(), ajax_call: 'selected', client_id: client_id},
+      success: function(response) {
+        console.log(true)
+      }
+    });
+  });
 
-  // $("#isin-portfolio-filter").on('keyup paste', function() {
-  //   $.ajax({
-  //     url: '/port_folio_isin_sort',
-  //     type: "GET",
-  //     dataType: "script",
-  //     data: {isis: $(this).val(), ajax_call: 'analyse'},
-  //     success: function(response) {
-  //       console.log(true)
-  //     }
-  //   });
-  // });
+  $("#isin-portfolio-filter").on('keyup paste', function() {
+    $.ajax({
+      url: '/port_folio_isin_sort',
+      type: "GET",
+      dataType: "script",
+      data: {isis: $(this).val(), ajax_call: 'analyse'},
+      success: function(response) {
+        console.log(true)
+      }
+    });
+  });
+
+  $(document).on('click', ".port-folio-inner-select-td" ,function (e){
+    var client_id = $(".client-portfolio").val();
+    clientPortfolioField();
+    if (removeValues != 0){
+      $.ajax({
+        url: '/port_folio_remove',
+        type: "GET",
+        dataType: "script",
+        data: {security_id: removeValues, client_id: client_id},
+        success: function(response){
+          removeValues = [];
+        }
+      });
+    }
+  });
+
+  function clientPortfolioField(){
+    $.each($("input[name='port-folio-check']:checked"), function(){
+      removeValues.push([$(".port-folio-inner-row-"+this.value).find('td')[7].innerText])    
+    });
+  }
 
 });
 
-        
+      

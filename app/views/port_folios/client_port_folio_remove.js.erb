@@ -1,6 +1,8 @@
 <% if @values.present?%>
-	$(".search-tag").show();
 	$(".port-selected-table").html("<%= escape_javascript(render partial: 'partials/selected_port_folio', locals: { table_datas: @values } ) %>")
+	$(".port-folios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
 <% else %>
+	$(".search-tag").hide();
+	$(".port-selected-table").hide();
 	$(".port-folios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
 <% end %>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/port_folio_client_filter', to: 'port_folios#index'
   get '/port_folio_isin_sort', to: 'port_folios#sort'
   get '/port_folio_isin_select', to: 'port_folios#sort'
+  get '/port_folio_remove', to: 'port_folios#client_port_folio_remove'
   resources :security_types
   resources :issuers
   resources :archival_ndsoms
