@@ -1,8 +1,10 @@
 <% if @values.present?%>
 	$(".port-selected-table").show();
+	$(".search-tag").show();
 	$(".port-selected-table").html("<%= escape_javascript(render partial: 'partials/selected_port_folio', locals: { table_datas: @values } ) %>")
-	$(".portfolios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
+	$(".port-folios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
 <% else%>
-	$(".portfolios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
+	$(".search-tag").hide();
+	$(".port-folios-table").html("<%= escape_javascript(render partial: 'partials/security_table_port_folio', locals: {table_datas: @analyse_data})%>")
 	$(".port-selected-table").hide();
 <% end %>

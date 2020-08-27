@@ -1,11 +1,3 @@
-
-<!-- <div class="d-flex row mt-3">
-  <div class="d-analysis col-2 float-left">
-      <label>By Name / ISIN</label>
-      <input type="text" class="w-100" alt="" id="isin-selected"/>
-  </div>
-</div> -->
-
 <table class="table table-bordered mt-3">
   <thead>
   <tr>
@@ -18,6 +10,7 @@
       <th scope="col">Interest %</th>
       <th scope="col">YTM %</th>
       <th scope="col">Select</th>
+      <th scope="col" class="hidden">security_id</th>
   </tr>
   </thead>
   <tbody>
@@ -32,8 +25,9 @@
       <td class="port-folio-inner-trade-price" value="<%=value.trade_price %>"><%= value.trade_price %></td>
       <td class="port-folio-inner-freq" value="<%= value.frequency %>"><%= value.frequency %></td>
       <td class="port-folio-inner-ytm" value="<%= value.ytm %>"><%=value.ytm %></td>
+      <td class="port-folio-inner-security_id hidden" value="<%= value.id %>"><%=value.id %></td>  
       <td class="port-folio-inner-select-td"><label class="btn btn-color">
-        <input type="checkbox" name="port-folio-check" class="port-folio-inner-select" id="c-hidden" value="<%= index%>"/> Select
+        <input type="checkbox" name="port-folio-check" class="port-folio-inner-select" id="c-hidden" value="<%= index%>"/> Remove
       </label></td>
     </tr>
   <% end %>
