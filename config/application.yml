@@ -8,5 +8,5 @@
 #
 production:
   DATABASE_URL: trade_analyse
-  USERNAME: deploy
+  DATABASE_USERNAME: deploy
   DATABASE_PASSWORD: deploy@2020
