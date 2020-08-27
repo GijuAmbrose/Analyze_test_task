@@ -50,6 +50,6 @@ production:
   adapter: mysql2
   encoding: utf8mb4
   pool: 5 
-  database: trade_analyse
-  username: deploy
-  password: deploy@2020
+  database: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV ['USERNAME'] %>
+  password: <%= ENV ['DATABASE_PASSWORD'] %>
